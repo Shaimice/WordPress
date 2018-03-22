@@ -11,7 +11,7 @@ Time spent: 7 hours spent in total
     - Vulnerability types: User Enumeration
     - Tested in version: 4.3
     - Fixed in version: Not corrected due to severity disputed by WordPress
-  - [ ] GIF Walkthrough: ![](my_gif_walkthrough_url)
+  - [ ] GIF Walkthrough: ![](https://github.com/Shaimice/WordPress/blob/master/UserEnumeration.gif)
   - [ ] Steps to recreate:
     - Navigate to http://WPDistillery.vm/wp-login.php
     - Attempt user enumeration by placing Admin in Username
