@@ -7,19 +7,19 @@ Time spent: 7 hours spent in total
 ## Pentesting Report
 
 1. User Enumeration
-  - [ ] Summary:
+  - [X] Summary:
     - Vulnerability types: User Enumeration
     - Tested in version: 4.3
     - Fixed in version: Not corrected due to severity disputed by WordPress
-  - [ ] GIF Walkthrough: ![](https://github.com/Shaimice/WordPress/blob/master/UserEnumeration.gif)
-  - [ ] Steps to recreate:
+  - [X] GIF Walkthrough: ![](https://github.com/Shaimice/WordPress/blob/master/UserEnumeration.gif)
+  - [X] Steps to recreate:
     - Navigate to http://WPDistillery.vm/wp-login.php
     - Attempt user enumeration by placing Admin in Username
     - Use any generic password
     - Website responds with "ERROR: The password you entered for the username admin is incorrect. Lost your password?"
-  - [ ] Affected source code:
+  - [X] Affected source code:
     - [Link 1](https://core.trac.wordpress.org/browser/branches/4.3/src/wp-login.php)
-1. (Required) Vulnerability Name or ID
+2. Vulnerability Name or ID
   - [ ] Summary:
     - Vulnerability types:
     - Tested in version:
