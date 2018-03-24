@@ -58,7 +58,7 @@ Time spent: 14 hours spent in total
     - Vulnerability types: SQL Injection
     - Tested in version: WP 4.3 | Events 2.3
     - Fixed in version: Has not been corrected in current version 2.3.4
-  - [X] GIF Walkthrough: (https://github.com/Shaimice/WordPress/blob/master/SQLIEvents.gif)
+  - [X] GIF Walkthrough: ![](https://github.com/Shaimice/WordPress/blob/master/SQLIEvents.gif)
   - [X] Steps to recreate:
     - Login to http://WPDistillery/wp-admin/
     - Install WordPress Events plugin version <=2.3.4.
@@ -72,7 +72,7 @@ Time spent: 14 hours spent in total
     - Vulnerability types: SQL Injection
     - Tested in version: WP 4.3 | Jobs 1.4
     - Fixed in version: Jobs 1.5
-  - [X] GIF Walkthrough: (https://github.com/Shaimice/WordPress/blob/master/SQLIJobs.gif)
+  - [X] GIF Walkthrough: ![](https://github.com/Shaimice/WordPress/blob/master/SQLIJobs.gif)
   - [X] Steps to recreate:
     - Login to http://WPDistillery/wp-admin/
     - Install WordPress Jobs plugin version <=1.4
