@@ -1,6 +1,6 @@
 # Project 7 - WordPress Pentesting
 
-Time spent: 7 hours spent in total
+Time spent: 14 hours spent in total
 
 > Objective: Find, analyze, recreate, and document **five vulnerabilities** affecting an old version of WordPress
 
@@ -51,35 +51,39 @@ Time spent: 7 hours spent in total
       - Save the record.
     - Select Edit to edit the patient record and when the mouse is selected (onclick) the alert window appears.
   - [X] Affected source code:
-    - [DBA](https://codecanyon.net/item/doctor-appointment-booking-wordpress-plugin/21215314)
+    - [DBA plugin](https://codecanyon.net/item/doctor-appointment-booking-wordpress-plugin/21215314)
 
-4. Privileged Escalation
-  - [ ] Summary: WordPress allows for remote authenticated users to publish posts by leveraging the Contributor role, related to wp-admin/includes/post.php and wp-admin/includes/class-wp-posts-list-table.php.  A user with a contributor role can publish posts, which are reserved for users of the next-higher role.
-    - Vulnerability types: Privilege Escalation
-    - Tested in version: 3.8.1
-    - Fixed in version: 3.8.2
-  - [ ] GIF Walkthrough:
-  - [ ] Steps to recreate:
+4. SQL Injection of WordPress Events Plugin
+  - [X] Summary: WordPress Events plugin version 2.3. allows remote attackers to execute arbitrary SQL commands via the wp-events-edit & edit_event line.
+    - Vulnerability types: SQL Injection
+    - Tested in version: WP 4.3 | Events 2.3
+    - Fixed in version: Has not been corrected in current version 2.3.4
+  - [X] GIF Walkthrough: (https://github.com/Shaimice/WordPress/blob/master/SQLIEvents.gif)
+  - [X] Steps to recreate:
     - Login to http://WPDistillery/wp-admin/
-    - Create user account and assign the role of Contributor
-    - Logoff as Admin and login under new account with Contributor permissions
-    - Navigate to Posts
-  - [ ] Affected source code:
-    - [Link 1](https://core.trac.wordpress.org/browser/tags/version/src/source_file.php)
+    - Install WordPress Events plugin version <=2.3.4.
+    - On the web browser address line enter: http://WPDistillery.vm/wp-admin/admin.php?page=wp-events-edit&edit_event=2+UNION+SELECT+1,CONCAT(user_login,char(58),user_pass),3,4,5,6,7,8,9,10,11,12,13,14+FROM+wp_users+WHERE+ID=1
+    - WordPress Events plugin generates a new browser tab that has information from the wp_users table associated with the administrator's profile (ID=1)
+  - [X] Affected source code:
+    - [WP Events plugin](https://ajdg.solutions/?pk_campaign=plugin-url)
 
-5. (Optional) Vulnerability Name or ID
-  - [ ] Summary:
-    - Vulnerability types:
-    - Tested in version:
-    - Fixed in version:
-  - [ ] GIF Walkthrough:
-  - [ ] Steps to recreate:
+5. SQL Injection of WordPress Jobs Plugin
+  - [X] Summary: WordPress Jobs plugin version 1.4 possesses a SQL injection vulnerability which allows authenticated users to execute arbitrary SQL commands via the jobid parameter to wp-admin/edit.php.
+    - Vulnerability types: SQL Injection
+    - Tested in version: WP 4.3 | Jobs 1.4
+    - Fixed in version: Jobs 1.5
+  - [X] GIF Walkthrough: (https://github.com/Shaimice/WordPress/blob/master/SQLIJobs.gif)
+  - [X] Steps to recreate:
+    - Login to http://WPDistillery/wp-admin/
+    - Install WordPress Jobs plugin version <=1.4
+    - On the web browser address line enter: http://wpdistillery.vm/wp-admin/edit.php?post_type=job&page=WPJobsJobApps&jobid=1+UNION+ALL+SELECT+NULL%2CNULL%2CNULL%2C%40%40version%2CNULL%2CNULL
+    - WordPress Jobs plugin reveals the database version in the Email field
   - [ ] Affected source code:
-    - [Link 1](https://core.trac.wordpress.org/browser/tags/version/src/source_file.php)
+    - [WP Jobs plugin](https://wordpress.org/plugins/wp-job-manager/)
 
 ## Assets
 
-List any additional assets, such as scripts or files
+No additional assets, such as scripts or files were used during this exercise
 
 ## Resources
 
@@ -92,7 +96,7 @@ GIFs created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while doing the work
+Locating plugins that fell under the upload threshold requirements of php.ini was a challenge.  Those that exceeded the threshold resulted in an error being returned as follows:  The uploaded file exceeds the upload_max_filesize directive in php.ini.
 
 ## License
 
